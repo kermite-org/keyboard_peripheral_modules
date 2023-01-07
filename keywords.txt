@@ -1,0 +1,33 @@
+#######################################
+# Syntax Coloring Map For keyboard_peripheral_modules
+#######################################
+# Class
+#######################################
+
+BoardLED	KEYWORD1
+BoardLED_NeoPixel	KEYWORD1
+KeyMatrix	KEYWORD1
+SimpleButton	KEYWORD1
+
+#######################################
+# Methods and Functions
+#######################################	
+
+initialize			KEYWORD2
+write			KEYWORD2
+toggle			KEYWORD2
+update		KEYWORD2
+setKeyStateListener			KEYWORD2
+updateInput		KEYWORD2
+
+hold			KEYWORD2
+pressed		KEYWORD2
+released		KEYWORD2
+keyStates			KEYWORD2
+
+
+#######################################
+# Constants
+#######################################
+
+# no constants exposed
