@@ -15,6 +15,23 @@ void BoardLED_NeoPixel::initialize() {
   neoPixel.setBrightness(brightness);
 }
 
+void BoardLED_NeoPixel::updateLedColor() {
+  int col = 0;
+  if (states[0]) {
+    col |= 0xFF0000;
+  }
+  if (states[1]) {
+    col |= 0x00FF00;
+  }
+  if (states[2]) {
+    col |= 0x0000FF;
+  }
+
+  neoPixel.clear();
+  neoPixel.setPixelColor(0, col);
+  neoPixel.show();
+}
+
 void BoardLED_NeoPixel::write(int index, bool value) {
   states[index] = value;
   updateLedColor();
