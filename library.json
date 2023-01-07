@@ -1,0 +1,19 @@
+{
+  "name": "keyboard_peripheral_modules",
+  "version": "0.1.0",
+  "description": "A set of general modules used for making a keyboard firmware.",
+  "keywords": "keyboard, RP2040, Kermite",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kermite-org/keyboard_peripheral_modules.git"
+  },
+  "authors": [
+    {
+      "name": "kermite-org"
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://kermite.org",
+  "frameworks": "arduino",
+  "platforms": "raspberrypi"
+}
