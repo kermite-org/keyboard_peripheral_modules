@@ -7,13 +7,15 @@
     "type": "git",
     "url": "https://github.com/kermite-org/keyboard_peripheral_modules.git"
   },
-  "authors": [
-    {
-      "name": "kermite-org"
-    }
-  ],
+  "authors": [{ "name": "yahiro" }],
   "license": "MIT",
   "homepage": "https://kermite.org",
   "frameworks": "arduino",
-  "platforms": "raspberrypi"
+  "platforms": "raspberrypi",
+  "dependencies": {
+    "adafruit/Adafruit_NeoPixel": "https://github.com/adafruit/Adafruit_NeoPixel"
+  },
+  "export": {
+    "exclude": [".gitignore", ".clang-format"]
+  }
 }
