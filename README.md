@@ -12,6 +12,9 @@ Provide up to 3 LEDs on board. Support normal (non-neopixel) RGB LEDs.
 ### BoardLED_NeoPixel
 Wrap onboard NeoPixel LED so as to be used as 3 individual LEDs. The interface is the same as BoardLED.
 
+### SimpleButton
+Used to read the input state of a key switch or tact switch direct wired to the MCU port.
+
 ### KeyMatrix
 General key matrix scanner. It is compatible to key matrix circuit with per-switch diode or diode-less. If there are'n diodes, only up to 2 keys could be detected at a time.
 
