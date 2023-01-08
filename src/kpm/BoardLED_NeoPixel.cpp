@@ -2,7 +2,7 @@
 #include <Arduino.h>
 
 BoardLED_NeoPixel::BoardLED_NeoPixel(int pin, int _brightness, int _powerPin)
-    : neoPixel(1, pin, NEO_BGR) {
+    : neoPixel(1, pin, NEO_GRB) {
   brightness = _brightness;
   powerPin = _powerPin;
 }
