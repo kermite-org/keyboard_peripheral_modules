@@ -9,13 +9,10 @@
   },
   "authors": [{ "name": "yahiro" }],
   "license": "MIT",
-  "homepage": "https://kermite.org",
+  "homepage": "https://github.com/kermite-org/keyboard_peripheral_modules",
   "frameworks": "arduino",
   "platforms": "raspberrypi",
   "dependencies": {
     "adafruit/Adafruit_NeoPixel": "https://github.com/adafruit/Adafruit_NeoPixel"
-  },
-  "export": {
-    "exclude": [".gitignore", ".clang-format"]
   }
 }
