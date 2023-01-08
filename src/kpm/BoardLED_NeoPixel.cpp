@@ -13,6 +13,7 @@ void BoardLED_NeoPixel::initialize() {
     digitalWrite(powerPin, HIGH);
   }
   neoPixel.setBrightness(brightness);
+  neoPixel.begin();
 }
 
 void BoardLED_NeoPixel::updateLedColor() {
