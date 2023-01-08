@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/kermite-org/keyboard_peripheral_modules.git"
   },
-  "authors": [{ "name": "yahiro" }],
+  "authors": [{ "name": "Kermite" }],
   "license": "MIT",
   "homepage": "https://github.com/kermite-org/keyboard_peripheral_modules",
   "frameworks": "arduino",
