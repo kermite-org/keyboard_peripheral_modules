@@ -10,8 +10,11 @@ BoardLED::BoardLED(int _pin0, int _pin1, int _pin2, bool _invert) {
 
 void BoardLED::initialize() {
   for (int i = 0; i < 3; i++) {
-    pinMode(pins[i], OUTPUT);
-    digitalWrite(pins[i], invert ? HIGH : LOW);
+    int pin = pins[i];
+    if (pin != -1) {
+      pinMode(pin, OUTPUT);
+      digitalWrite(pin, invert ? HIGH : LOW);
+    }
   }
 }
 
