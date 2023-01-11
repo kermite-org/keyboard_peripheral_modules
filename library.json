@@ -13,7 +13,7 @@
   "frameworks": "arduino",
   "platforms": "raspberrypi",
   "dependencies": {
-    "adafruit/Adafruit_NeoPixel": "https://github.com/adafruit/Adafruit_NeoPixel"
+    "adafruit/Adafruit NeoPixel": "^1.10.7"
   },
   "export": {
     "exclude": [
