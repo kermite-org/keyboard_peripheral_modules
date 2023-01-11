@@ -1,6 +1,6 @@
 {
   "name": "keyboard_peripheral_modules",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A set of general modules used for making a keyboard firmware.",
   "keywords": "keyboard, RP2040, Kermite",
   "repository": {
