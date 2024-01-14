@@ -1,4 +1,5 @@
 #pragma once
+#include <stdint.h>
 
 typedef void (*KeyStateListenerFn)(int keyIndex, bool pressed);
 
@@ -14,7 +15,11 @@ private:
 public:
   bool *keyStates;
 
-  KeyMatrix(const int *_columnPins, const int *_rowPins, int _numColumns, int _numRows);
+  KeyMatrix(const int *_columnPins, const int *_rowPins, int _numColumns,
+            int _numRows);
+  KeyMatrix(const uint8_t *_columnPins, const uint8_t *_rowPins,
+            int _numColumns, int _numRows);
+
   void setKeyStateListener(KeyStateListenerFn fn);
   void initialize();
   void updateInput();

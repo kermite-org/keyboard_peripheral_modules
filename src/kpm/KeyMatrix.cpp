@@ -1,9 +1,29 @@
 #include "KeyMatrix.h"
 #include <Arduino.h>
 
-KeyMatrix::KeyMatrix(const int *_columnPins, const int *_rowPins, int _numColumns, int _numRows) {
+const int *allocatePins_i32(const uint8_t *pins_u8, int numPins) {
+  int *pins_i32 = new int[numPins];
+  for (int i = 0; i < numPins; i++) {
+    pins_i32[i] = pins_u8[i];
+  }
+  return pins_i32;
+}
+
+KeyMatrix::KeyMatrix(const int *_columnPins, const int *_rowPins,
+                     int _numColumns, int _numRows) {
   columnPins = _columnPins;
   rowPins = _rowPins;
+  numColumns = _numColumns;
+  numRows = _numRows;
+  keyStateListener = nullptr;
+  inputKeyStates = new bool[numColumns * numRows];
+  keyStates = new bool[numColumns * numRows];
+}
+
+KeyMatrix::KeyMatrix(const uint8_t *_columnPins, const uint8_t *_rowPins,
+                     int _numColumns, int _numRows) {
+  columnPins = allocatePins_i32(_columnPins, _numColumns);
+  rowPins = allocatePins_i32(_rowPins, _numRows);
   numColumns = _numColumns;
   numRows = _numRows;
   keyStateListener = nullptr;
