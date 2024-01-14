@@ -1,7 +1,8 @@
 #pragma once
+#include "IBoardLED.h"
 #include <Adafruit_NeoPixel.h>
 
-class BoardLED_NeoPixel {
+class BoardLED_NeoPixel : public IBoardLED {
 private:
   Adafruit_NeoPixel neoPixel;
   uint8_t brightness;

@@ -1,6 +1,7 @@
 #pragma once
+#include "IBoardLED.h"
 
-class BoardLED {
+class BoardLED : public IBoardLED {
 private:
   bool invert;
   int pins[3];
