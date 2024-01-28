@@ -15,6 +15,7 @@ KeyMatrix::KeyMatrix(const int *_columnPins, const int *_rowPins,
   rowPins = _rowPins;
   numColumns = _numColumns;
   numRows = _numRows;
+  keyIndexBase = 0;
   keyStateListener = nullptr;
   inputKeyStates = new bool[numColumns * numRows];
   keyStates = new bool[numColumns * numRows];
@@ -26,9 +27,14 @@ KeyMatrix::KeyMatrix(const uint8_t *_columnPins, const uint8_t *_rowPins,
   rowPins = allocatePins_i32(_rowPins, _numRows);
   numColumns = _numColumns;
   numRows = _numRows;
+  keyIndexBase = 0;
   keyStateListener = nullptr;
   inputKeyStates = new bool[numColumns * numRows];
   keyStates = new bool[numColumns * numRows];
+}
+
+void KeyMatrix::setKeyIndexBase(int _keyIndexBase) {
+  keyIndexBase = _keyIndexBase;
 }
 
 void KeyMatrix::setKeyStateListener(KeyStateListenerFn fn) {
@@ -61,10 +67,10 @@ void KeyMatrix::updateInput() {
       bool curr = keyStates[i];
       bool next = inputKeyStates[i];
       if (!curr && next) {
-        keyStateListener(i, true);
+        keyStateListener(keyIndexBase + i, true);
       }
       if (curr && !next) {
-        keyStateListener(i, false);
+        keyStateListener(keyIndexBase + i, false);
       }
     }
     keyStates[i] = inputKeyStates[i];

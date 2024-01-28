@@ -1,14 +1,14 @@
 #pragma once
+#include "IKeyScanner.h"
 #include <stdint.h>
 
-typedef void (*KeyStateListenerFn)(int keyIndex, bool pressed);
-
-class KeyMatrix {
+class KeyMatrix : public IKeyScanner {
 private:
   const int *columnPins;
   const int *rowPins;
   int numColumns;
   int numRows;
+  int keyIndexBase;
   KeyStateListenerFn keyStateListener;
   bool *inputKeyStates;
 
@@ -20,6 +20,7 @@ public:
   KeyMatrix(const uint8_t *_columnPins, const uint8_t *_rowPins,
             int _numColumns, int _numRows);
 
+  void setKeyIndexBase(int _keyIndexBase);
   void setKeyStateListener(KeyStateListenerFn fn);
   void initialize();
   void updateInput();
