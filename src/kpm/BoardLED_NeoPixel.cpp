@@ -5,6 +5,7 @@ BoardLED_NeoPixel::BoardLED_NeoPixel(int pin, int _brightness, int _powerPin)
     : neoPixel(1, pin, NEO_GRB) {
   brightness = _brightness;
   powerPin = _powerPin;
+  states[0] = states[1] = states[2] = false;
 }
 
 void BoardLED_NeoPixel::initialize() {

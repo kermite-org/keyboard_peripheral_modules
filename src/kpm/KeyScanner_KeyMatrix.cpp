@@ -1,4 +1,4 @@
-#include "KeyMatrix.h"
+#include "KeyScanner_KeyMatrix.h"
 #include <Arduino.h>
 
 const int *allocatePins_i32(const uint8_t *pins_u8, int numPins) {
@@ -9,33 +9,39 @@ const int *allocatePins_i32(const uint8_t *pins_u8, int numPins) {
   return pins_i32;
 }
 
-KeyMatrix::KeyMatrix(const int *_columnPins, const int *_rowPins,
-                     int _numColumns, int _numRows) {
+KeyScanner_KeyMatrix::KeyScanner_KeyMatrix(
+    const int *_columnPins, const int *_rowPins, int _numColumns, int _numRows) {
   columnPins = _columnPins;
   rowPins = _rowPins;
   numColumns = _numColumns;
   numRows = _numRows;
+  keyIndexBase = 0;
   keyStateListener = nullptr;
   inputKeyStates = new bool[numColumns * numRows];
   keyStates = new bool[numColumns * numRows];
 }
 
-KeyMatrix::KeyMatrix(const uint8_t *_columnPins, const uint8_t *_rowPins,
-                     int _numColumns, int _numRows) {
+KeyScanner_KeyMatrix::KeyScanner_KeyMatrix(
+    const uint8_t *_columnPins, const uint8_t *_rowPins, int _numColumns, int _numRows) {
   columnPins = allocatePins_i32(_columnPins, _numColumns);
   rowPins = allocatePins_i32(_rowPins, _numRows);
   numColumns = _numColumns;
   numRows = _numRows;
+  keyIndexBase = 0;
   keyStateListener = nullptr;
   inputKeyStates = new bool[numColumns * numRows];
   keyStates = new bool[numColumns * numRows];
 }
 
-void KeyMatrix::setKeyStateListener(KeyStateListenerFn fn) {
+void KeyScanner_KeyMatrix::setKeyIndexBase(int _keyIndexBase) {
+  keyIndexBase = _keyIndexBase;
+}
+
+void KeyScanner_KeyMatrix::setKeyStateListener(KeyStateListenerFn fn) {
   keyStateListener = fn;
 }
 
-void KeyMatrix::initialize() {
+void KeyScanner_KeyMatrix::initialize() {
   for (int i = 0; i < numColumns; i++) {
     pinMode(columnPins[i], INPUT_PULLUP);
   }
@@ -44,7 +50,7 @@ void KeyMatrix::initialize() {
   }
 }
 
-void KeyMatrix::updateInput() {
+void KeyScanner_KeyMatrix::updateInput() {
   for (int row = 0; row < numRows; row++) {
     int rowPin = rowPins[row];
     pinMode(rowPin, OUTPUT);
@@ -61,10 +67,10 @@ void KeyMatrix::updateInput() {
       bool curr = keyStates[i];
       bool next = inputKeyStates[i];
       if (!curr && next) {
-        keyStateListener(i, true);
+        keyStateListener(keyIndexBase + i, true);
       }
       if (curr && !next) {
-        keyStateListener(i, false);
+        keyStateListener(keyIndexBase + i, false);
       }
     }
     keyStates[i] = inputKeyStates[i];
