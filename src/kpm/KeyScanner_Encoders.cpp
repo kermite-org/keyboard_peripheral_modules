@@ -40,14 +40,15 @@ static void onPinChange(void *_es) {
 }
 
 KeyScanner_Encoders::KeyScanner_Encoders(int _numPins, const uint8_t *_pins) {
-  bool pinsValid = (0 < _numPins && _numPins <= 8 && _numPins % 2 == 0);
+  bool pinsValid = (2 <= _numPins && _numPins <= 8);
   if (!pinsValid) {
     moduleActive = false;
     return;
   }
-
+  //ピン数が奇数の場合は末尾のピンを無視して偶数個のピンに対応する
+  //エンコーダのインスタンスを確保する
   numEncoders = _numPins / 2;
-  numOutputKeys = _numPins;
+  numOutputKeys = numEncoders * 2;
   for (int i = 0; i < numEncoders; i++) {
     int pinA = _pins[i * 2];
     int pinB = _pins[i * 2 + 1];
