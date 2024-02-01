@@ -1,6 +1,6 @@
 {
   "name": "keyboard_peripheral_modules",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "description": "A set of general modules used for making a keyboard firmware.",
   "keywords": "keyboard, RP2040, Kermite",
   "repository": {
@@ -16,12 +16,6 @@
     "adafruit/Adafruit NeoPixel": "^1.10.7"
   },
   "export": {
-    "exclude": [
-      ".gitignore",
-      ".vscode",
-      ".clang-format",
-      "cspell.json",
-      "keywords.txt"
-    ]
+    "exclude": [".gitignore", ".vscode", ".clang-format", "cspell.json"]
   }
 }
