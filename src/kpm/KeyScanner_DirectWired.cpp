@@ -6,8 +6,8 @@ KeyScanner_DirectWired::KeyScanner_DirectWired(int _numPins, const uint8_t *_pin
   pins = _pins;
   keyStateListener = nullptr;
   keyIndexBase = 0;
-  inputKeyStates = new bool[numPins];
-  keyStates = new bool[numPins];
+  inputKeyStates = new bool[numPins]();
+  keyStates = new bool[numPins]();
 }
 
 void KeyScanner_DirectWired::setKeyIndexBase(int _keyIndexBase) {

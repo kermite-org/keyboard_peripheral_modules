@@ -63,8 +63,8 @@ KeyScanner_Encoders::KeyScanner_Encoders(int _numPins, const uint8_t *_pins) {
   }
   keyIndexBase = 0;
   keyStateListener = nullptr;
-  inputKeyStates = new bool[numOutputKeys];
-  keyStates = new bool[numOutputKeys];
+  inputKeyStates = new bool[numOutputKeys]();
+  keyStates = new bool[numOutputKeys]();
   moduleActive = true;
 }
 

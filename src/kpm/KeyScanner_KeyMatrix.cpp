@@ -17,8 +17,8 @@ KeyScanner_KeyMatrix::KeyScanner_KeyMatrix(
   numRows = _numRows;
   keyIndexBase = 0;
   keyStateListener = nullptr;
-  inputKeyStates = new bool[numColumns * numRows];
-  keyStates = new bool[numColumns * numRows];
+  inputKeyStates = new bool[numColumns * numRows]();
+  keyStates = new bool[numColumns * numRows]();
 }
 
 KeyScanner_KeyMatrix::KeyScanner_KeyMatrix(
@@ -29,8 +29,8 @@ KeyScanner_KeyMatrix::KeyScanner_KeyMatrix(
   numRows = _numRows;
   keyIndexBase = 0;
   keyStateListener = nullptr;
-  inputKeyStates = new bool[numColumns * numRows];
-  keyStates = new bool[numColumns * numRows];
+  inputKeyStates = new bool[numColumns * numRows]();
+  keyStates = new bool[numColumns * numRows]();
 }
 
 void KeyScanner_KeyMatrix::setKeyIndexBase(int _keyIndexBase) {
